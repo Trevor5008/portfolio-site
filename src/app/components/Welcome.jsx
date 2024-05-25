@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
    Box,
    Button,
@@ -7,7 +7,8 @@ import {
 } from "@mui/material";
 import { blink } from "@/styles/blink";
 
-export default function Welcome({ handleWelcomeView }) {
+export default function Welcome({ passWelcomeView }) {
+   const router = useRouter();
    return (
       <main style={{ 
          background: "#112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg) center no-repeat",
@@ -57,7 +58,9 @@ export default function Welcome({ handleWelcomeView }) {
                   textShadow: "0 -40px 100px, 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000",
                   color: "#fee"
                }}
-               onClick={handleWelcomeView}
+               onClick={() => {
+                  passWelcomeView();
+               }}
             >
                Enter
             </Button>

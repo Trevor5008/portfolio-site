@@ -1,26 +1,18 @@
-// import Image from "next/image";
 "use client";
-import { useState } from "react";
-import {
-      Box,
-      Button,
-      Typography
-} from "@mui/material";
-import '../styles/fonts.css';
-// blink animation
-import Welcome from "./components/Welcome";
-import Header from "./components/Header";
+import { useRouter } from "next/navigation";
+import Welcome from './components/Welcome';
 
 export default function Home() {
-   const [welcomeView, setWelcomeView] = useState(true);
+   const router = useRouter();
 
-   function handleWelcomeView() {
-      setWelcomeView(false);
+   function passWelcomeView() {
+      console.log("passWelcomeView");
+      router.push("./about");
    }
-
-   return welcomeView ? (
-      <Welcome handleWelcomeView={handleWelcomeView}/>
-   ) : (
-      <Header />
-   );
+   
+  return (
+   <main>
+      <Welcome passWelcomeView={passWelcomeView}/>
+   </main>
+  )
 }

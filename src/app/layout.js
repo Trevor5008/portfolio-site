@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "@/styles/themes";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,7 +11,9 @@ export default function RootLayout({ children }) {
          </head>
          <ThemeProvider theme={theme}>
             <CssBaseline />
-            <body>{children}</body>
+            <body>
+               {children}
+            </body>
          </ThemeProvider>
       </html>
    );

@@ -1,21 +1,32 @@
 "use client";
-import { useState } from "react";
-import { Typography, Box } from "@mui/material";
+import { 
+   Box,
+   Button,
+   Typography
+} from "@mui/material";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useRouter } from "next/navigation";
 
 export default function Header() {
+   const router = useRouter();
    // TODO: Add a decoration for current page link
    return (
       <Box
          display="flex"
          paddingY={1}
          alignItems="center"
-         justifyContent="right"
+         justifyContent="space-between"
          margin={1}
          borderBottom={".5px solid grey"}
       >
          <Box
-            marginRight={6}
+            display="flex"
          >
+            <Button onClick={() => router.push("/")}>
+               <ArrowBackIcon />
+            </Button>
+         </Box>
+         <Box marginRight={6}>
             <Typography
                variant="h6"
                fontWeight={100}
@@ -25,6 +36,7 @@ export default function Header() {
                      fontWeight: 600,
                   },
                }}
+               onClick={() => router.push("/about")}
             >
                About
             </Typography>
@@ -39,8 +51,9 @@ export default function Header() {
                      fontWeight: 600,
                   },
                }}
+               onClick={() => router.push("/projects")}
             >
-               Contact
+               Projects
             </Typography>
          </Box>
          <Box marginRight={6}>
@@ -53,8 +66,9 @@ export default function Header() {
                      fontWeight: 600,
                   },
                }}
+               onClick={() => router.push("/contact")}
             >
-               Projects
+               Contact
             </Typography>
          </Box>
       </Box>
