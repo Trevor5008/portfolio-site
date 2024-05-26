@@ -43,6 +43,7 @@ export default function Home() {
                width="20vw"
                marginY={3}
             >
+               {/* Bio title */}
                <Typography 
                   variant="h6"
                   color="grey"
@@ -51,6 +52,7 @@ export default function Home() {
                   Welcome to my site... 👋 
                </Typography>
                <hr color="black"/>
+               {/* Bio description */}
                <Typography 
                   variant="body1"
                   color="grey"
@@ -60,7 +62,7 @@ export default function Home() {
                </Typography>
             </Box>
          </Box>
-         {/* Video Resume */}
+         {/* Video Resume from YouTube */}
          <Box>
             <iframe
                id="my-video-resume"
