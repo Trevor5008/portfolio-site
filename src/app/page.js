@@ -6,7 +6,6 @@ export default function Home() {
    const router = useRouter();
 
    function passWelcomeView() {
-      console.log("passWelcomeView");
       router.push("./about");
    }
    
