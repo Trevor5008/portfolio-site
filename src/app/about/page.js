@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
       Box,
       Button,
+      Container,
       Typography
 } from "@mui/material";
 import '../../styles/fonts.css';
@@ -10,6 +11,8 @@ import '../../styles/fonts.css';
 export default function Home() {
 
    return (
-      <Typography variant="h1" className="home">About</Typography>
+      <Container>
+         <Typography variant="h1" className="home">About</Typography>
+      </Container>
    );
 }

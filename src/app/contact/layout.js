@@ -1,9 +1,9 @@
 import Header from "../components/Header";
 
-export default function ContactLayout({ children }) {
+export default function ContactLayout({ children, activeLink }) {
    return (
       <section>
-         <Header />
+         <Header activeLink={activeLink}/>
          {children}
       </section>
    );
