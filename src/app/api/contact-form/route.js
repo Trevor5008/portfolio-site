@@ -10,7 +10,7 @@ export async function POST(req, { params }) {
    const { firstName, lastName, subject, message } = data;
 
    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-   
+   // TODO: Configure to handle multiple from addressess
    const msg = {
       to: "trezrevner@icloud.com", // Change to your recipient
       from: "trevorwerner@hotmail.com", // Change to your verified sender

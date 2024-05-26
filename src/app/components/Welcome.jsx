@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
 import {
    Box,
    Button,
@@ -8,7 +7,6 @@ import {
 import { blink } from "@/styles/blink";
 
 export default function Welcome({ passWelcomeView }) {
-   const router = useRouter();
    return (
       <main style={{ 
          background: "#112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg) center no-repeat",
