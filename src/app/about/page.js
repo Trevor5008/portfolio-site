@@ -67,7 +67,7 @@ export default function Home() {
                width="700"
                height="400"
                type="text/html"
-               src="https://www.youtube.com/embed/vpRq63sc3qk"
+               src="https://www.youtube.com/embed/E1t32p-gE-U"
                title="YouTube video player"
                frameborder="0"
                controls="1"
