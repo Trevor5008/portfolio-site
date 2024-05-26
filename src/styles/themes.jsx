@@ -6,8 +6,8 @@ export const theme = createTheme({
       h1: {
       fontFamily: "Streamster, sans-serif",
       },
-      h2: {
-         fontFamily: "Major Mono Display, monospace",
+      h5: {
+         fontFamily: "IBM Plex Mono, monospace",
       },
       h6: {
          fontFamily: "IBM Plex Mono, monospace",
