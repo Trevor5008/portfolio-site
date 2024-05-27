@@ -15,5 +15,11 @@ export const theme = createTheme({
    },
    palette: {
       mode: "dark",
+      color: {
+         primary: "#a9c2f8",
+         secondary: "#f0f0f0",
+         background: "#121212",
+         text: "#f0f0f0",
+      },
    }
 });
