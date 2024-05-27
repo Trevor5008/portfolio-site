@@ -1,9 +1,9 @@
 import Header from "../components/Header";
 
-export default function AboutLayout({ children, activeLink }) {
+export default function AboutLayout({ children }) {
    return (
       <section>
-         <Header activeLink={activeLink}/>
+         <Header />
          {children}
       </section>
    );
