@@ -134,7 +134,7 @@ export default function EmailForm() {
                      label="Last Name"
                      type="text"
                      variant="filled"
-                     onChange={handleEmailChange}
+                     onChange={handleLastNameChange}
                      value={lastName}
                      required={true}
                      fullWidth
@@ -155,7 +155,7 @@ export default function EmailForm() {
                   label="Email"
                   type="email"
                   variant="filled"
-                  onChange={handleLastNameChange}
+                  onChange={handleEmailChange}
                   value={email}
                   required={true}
                   fullWidth
