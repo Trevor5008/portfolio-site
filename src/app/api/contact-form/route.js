@@ -1,36 +1,38 @@
 import { NextResponse } from "next/server";
-// using Twilio SendGrid's v3 Node.js Library
-// https://github.com/sendgrid/sendgrid-nodejs
+import sgMail from "@sendgrid/mail";
 
-const sgMail = require("@sendgrid/mail");
+export async function POST(req) {
+  try {
+    const rawBody = await req.text();
+    const data = JSON.parse(rawBody);
+    const { firstName, lastName, email, subject, message } = data;
 
-export async function POST(req, { params }) {
-   const rawBody = await req.text();
-   const data = JSON.parse(rawBody);
-   const { firstName, lastName, subject, message } = data;
-
-   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-   // TODO: Configure to handle multiple from addressess
-   const msg = {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
       to: "trezrevner@icloud.com", // Change to your recipient
-      from: "trevorwerner@hotmail.com", // Change to your verified sender
+      from: "noreply@trevor-werner.dev", // Change to your verified sender
       subject: subject,
       html: `
          <strong>Message:</strong> ${message}<br>
          <strong>From:</strong> ${firstName} ${lastName}<br>
-      `
-   };
-   sgMail
-      .send(msg)
-      .then(() => {
-         console.log("Email sent");
-      })
-      .catch((error) => {
-         console.error(error);
-      });
+         <string>Email:</strong> ${email}
+      `,
+    };
 
-   return NextResponse.json({
-      message: "Message received",
+    await sgMail.send(msg);
+    console.log("Email sent");
+
+    return NextResponse.json({
+      message: "Message received and email sent",
       status: 200,
-   });
+    });
+  } catch (error) {
+    console.error("Error sending email:", error.response ? error.response.body : error.message);
+    
+    return NextResponse.json({
+      message: "Failed to send email",
+      status: 500,
+      error: error.message,
+    });
+  }
 }

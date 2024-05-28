@@ -12,10 +12,11 @@ import SendIcon from "@mui/icons-material/Send";
 import FormConfirm from "./FormConfirm";
 
 export default function EmailForm() {
-   const [subject, setSubject] = useState("");
-   const [message, setMessage] = useState("");
    const [firstName, setFirstName] = useState("");
    const [lastName, setLastName] = useState("");
+   const [email, setEmail] = useState("");
+   const [subject, setSubject] = useState("");
+   const [message, setMessage] = useState("");
    // Confirmation dialog modal
    const [sendConfirm, setSendConfirm] = useState(false);
 
@@ -25,6 +26,10 @@ export default function EmailForm() {
 
    function handleLastNameChange(evt) {
       setLastName(evt.target.value);
+   }
+
+   function handleEmailChange(evt) {
+      setEmail(evt.target.value);
    }
 
    function handleSubjectLine(evt) {
@@ -40,6 +45,7 @@ export default function EmailForm() {
       // Reset the form
       setFirstName("");
       setLastName("");
+      setEmail("");
       setSubject("");
       setMessage("");
       setSendConfirm(false);
@@ -56,6 +62,7 @@ export default function EmailForm() {
          body: JSON.stringify({
             firstName,
             lastName,
+            email,
             subject,
             message,
          }),
@@ -77,21 +84,27 @@ export default function EmailForm() {
             margin="auto"
             marginTop={4}
          >
-            <Typography 
-            variant="h4" 
-            fontStyle="italic"
-            textAlign=""
-            marginY={4}
-            marginRight="5vw"
-         >
-            Let&apos;s connect:
-         </Typography>
+            <Typography
+               variant="h4"
+               fontStyle="italic"
+               textAlign=""
+               marginY={4}
+               marginRight="5vw"
+            >
+               Let&apos;s connect:
+            </Typography>
+            {/* Confirmation send modal - > appears after submission */}
             <FormConfirm
                handleConfirm={handleConfirm}
                sendConfirm={sendConfirm}
                setSendConfirm={setSendConfirm}
             />
-            <Box display="flex" margin="1rem 0" fullWidth>
+            {/* First and Last Name fields */}
+            <Box 
+               display="flex" 
+               margin="1rem 0" 
+               fullWidth
+            >
                {/* First Name */}
                <FormControl
                   id="first-name-control"
@@ -100,10 +113,12 @@ export default function EmailForm() {
                   }}
                   fullWidth
                >
+                  {/* First Name field */}
                   <TextField
                      id="first-name"
                      aria-describedby="first-name"
                      label="First Name"
+                     type="text"
                      variant="filled"
                      onChange={handleFirstNameChange}
                      value={firstName}
@@ -117,14 +132,35 @@ export default function EmailForm() {
                      id="last-name"
                      aria-describedby="last-name"
                      label="Last Name"
+                     type="text"
                      variant="filled"
-                     onChange={handleLastNameChange}
-                     value={lastName}
+                     onChange={handleEmailChange}
+                     value={email}
                      required={true}
                      fullWidth
                   />
                </FormControl>
             </Box>
+            {/* Email */}
+            <FormControl 
+               id="email-control" 
+               sx={{
+                  margin: ".75rem 0",
+               }}
+               fullWidth
+            >
+               <TextField
+                  id="email"
+                  aria-describedby="email"
+                  label="Email"
+                  type="email"
+                  variant="filled"
+                  onChange={handleLastNameChange}
+                  value={lastName}
+                  required={true}
+                  fullWidth
+               />
+            </FormControl>
             {/* Subject Line */}
             <FormControl
                id="subject-line-control"
